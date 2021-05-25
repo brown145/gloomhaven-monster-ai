@@ -1,0 +1,153 @@
+:root {
+  --xiketic: hsla(231, 82%, 6%, 1);
+  --dark-sienna: hsla(339, 80%, 12%, 1);
+  --rosewood: hsla(354, 93%, 22%, 1);
+  --dark-red: hsla(358, 97%, 31%, 1);
+  --rosso-corsa: #d10000;
+  --vermilion: hsla(12, 98%, 44%, 1);
+  --persimmon: hsla(23, 97%, 46%, 1);
+  --carrot-orange: hsla(34, 95%, 49%, 1);
+  --orange-web: hsla(39, 96%, 50%, 1);
+  --selective-yellow: hsla(43, 100%, 52%, 1);
+  --mid-smoke: hsl(0, 0%, 88%);
+  --white-smoke: hsl(0, 0%, 96%);
+
+  --hazard: #d75527;
+  --difficult: #552f8e;
+  --obstacle: #1d6f38;
+  --door: #244fa2;
+  --corridor: #90918f;
+  --trap: #921e20;
+  --brute: #3ff3fe;
+  --monster: #fe3f3f;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: #ccc;
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+  background-color: var(--white-smoke);
+  color: var(--xiketic);
+}
+#app-bar {
+  font-family: "VT323", monospace;
+  font-size: 1.5em;
+  color: var(--rosewood);
+  border-top: 2px solid var(--orange-web);
+  border-bottom: 1px solid var(--mid-smoke);
+}
+#app-main {
+  /* -- */
+}
+#app-scenrio-controls {
+  /* background-color: var(--color-theme-2); */
+  /* border-bottom: 1px solid var(--carrot-orange); */
+}
+#app-scenrio-display {
+  /* background-color: var(--color-theme-1); */
+}
+#app-scenrio-sidebar {
+  border-left: 1px solid var(--mid-smoke);
+  /* background-color: whitesmoke; */
+}
+#app-scenrio-hexInfo {
+  /* background-color: var(--color-theme-1); */
+}
+#app-footer {
+  background-color: var(--xiketic);
+  color: var(--orange-web);
+}
+
+/* -------- */
+
+.hexBoard svg {
+  display: block;
+  overflow: visible;
+}
+
+.tile {
+  fill: #ffffff;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-width: 2;
+  stroke: #000000;
+}
+.tile:hover {
+  stroke: #929292;
+}
+.tile.empty {
+  fill: #ffffff;
+}
+.tile.wall {
+  fill: #929292;
+}
+.tile.obstacle {
+  fill: var(--obstacle);
+}
+.tile.hazard {
+  fill: var(--hazard);
+}
+.tile.difficult {
+  fill: var(--difficult);
+}
+.tile.door {
+  fill: var(--door);
+}
+.tile.corridor {
+  fill: var(--corridor);
+}
+
+.standee {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-width: 2;
+  stroke: #000000;
+}
+.standee.monster {
+  fill: var(--monster);
+  stroke: #661c2c;
+}
+.standee.player,
+.standee.summon {
+  fill: var(--brute);
+  stroke: #312574;
+}
+.standee-label {
+  stroke: none;
+  fill: white;
+}
+
+.token {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-width: 2;
+  stroke: #000000;
+  fill: none;
+}
+.token.notation {
+  fill: none;
+}
+.token.trap {
+  fill: var(--trap);
+}
+
+.coordinate {
+  stroke: none;
+  fill: rgba(0, 0, 0, 0.5);
+  font-size: 10px;
+}
+.coords-hidden .coordinate,
+.coordinate.occupied {
+  display: none;
+}
