@@ -1,3 +1,5 @@
+// import { useLocalStorage, writeStorage } from "@rehooks/local-storage";
+
 import BGGScenrios from "../Scenrios/bgg/";
 import Box from "@material-ui/core/Box";
 import Controls from "./Controls/";
@@ -6,12 +8,19 @@ import HexBoard from "./HexBoard/";
 import HexDetails from "./HexDetails";
 import React from "react";
 import Typography from "@material-ui/core/Typography";
+import useLocalStorage from "./util/useLocalStorage";
 
 const allLayouts = [...ExampleScenrios, ...BGGScenrios];
 
 const App = () => {
-  const [selectedLayoutIndex, setSelectedLayoutIndex] = React.useState(0);
-  const [showCoordinates, setShowCoordiates] = React.useState(false);
+  const [selectedLayoutIndex, setSelectedLayoutIndex] = useLocalStorage(
+    "config-selectedLayoutIndex",
+    0
+  );
+  const [showCoordinates, setShowCoordiates] = useLocalStorage(
+    "config-showCoords",
+    true
+  );
   const [hexInfo, setHexInfo] = React.useState(null);
 
   const selectedLayout = allLayouts[selectedLayoutIndex];

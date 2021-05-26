@@ -17,13 +17,14 @@ x color pallete
 x app colors
 x tile colors
 x cut v1.0
+x localstorage for scenrio and hex coord selections
 
-- localstorage for scenrio and hex coord selections
 - display focus and focus select text
 - fancy svg overlays for focus and path(s)
 - prevent rerenders for svg?
 - display attack/targets/range info
 - write unit tests for scenrios/ai
+- gh-pages
 - monster ai
   - find targets
   - select target
