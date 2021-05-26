@@ -1,14 +1,12 @@
-// import { useLocalStorage, writeStorage } from "@rehooks/local-storage";
-
-import BGGScenrios from "../Scenrios/bgg/";
+import BGGScenrios from "scenrios/bgg/";
 import Box from "@material-ui/core/Box";
-import Controls from "./Controls/";
-import ExampleScenrios from "../Scenrios/rulebook/";
-import HexBoard from "./HexBoard/";
-import HexDetails from "./HexDetails";
+import Controls from "ui/Controls/";
+import ExampleScenrios from "scenrios/rulebook/";
+import HexBoard from "ui/HexBoard/";
+import HexDetails from "ui/HexDetails";
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import useLocalStorage from "./util/useLocalStorage";
+import useLocalStorage from "ui/util/useLocalStorage";
 
 const allLayouts = [...ExampleScenrios, ...BGGScenrios];
 

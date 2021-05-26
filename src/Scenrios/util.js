@@ -2,7 +2,7 @@ import * as Honeycomb from "honeycomb-grid";
 
 import { STANDDEE_TYPES, TOKEN_TYPES } from "../types";
 
-import focusFinder from "../AI/focusFinder";
+import focusFinder from "ai/focusFinder";
 import { hexProps } from "./common";
 
 export const makeScenrio = ({

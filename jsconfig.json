@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": ".",
+    "paths": {
+      "ai": ["./src/AI/*"],
+      "ui": ["./src/UI/*"],
+      "scenrios": ["./src/Scenrios/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
