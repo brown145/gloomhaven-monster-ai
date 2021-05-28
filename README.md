@@ -20,6 +20,7 @@ x cut v1.0
 x localstorage for scenrio and hex coord selections
 
 - display focus and focus select text
+- include attack(s) (attack/range/targets) as part of scenrio
 - fancy svg overlays for focus and path(s)
 - prevent rerenders for svg?
 - display attack/targets/range info

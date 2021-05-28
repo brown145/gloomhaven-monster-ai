@@ -6,6 +6,8 @@ import { makeScenrio } from "../util";
 
 export const example1 = makeScenrio({
   title: "rulebook p30 ex1",
+  description:
+    "Example comes from the rule book p30 ex1. This scenrio demonstrates that even though a player my be closer in an absolute measurement; monsters will consider the effect things like traps have on the possible attack paths.",
   orientation: "flat",
   width: 9,
   height: 7,
@@ -137,7 +139,7 @@ export const example3 = makeScenrio({
 // -----------------------
 
 export const example4 = makeScenrio({
-  title: "rulebook p31 ex1",
+  title: "rulebook p31 ex2",
   orientation: "pointy",
   width: 9,
   height: 5,

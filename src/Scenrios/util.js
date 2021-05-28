@@ -8,6 +8,7 @@ import { hexProps } from "./common";
 export const makeScenrio = ({
   title,
   orientation,
+  description,
   height,
   width,
   monsters = {},
@@ -32,6 +33,7 @@ export const makeScenrio = ({
   const ai = focusFinder(grid);
 
   grid.title = title;
+  grid.description = description;
   grid.playerHexes = Object.values(players).map((v) => grid.get(v));
   grid.monsterHexes = Object.values(monsters).map((v) => grid.get(v));
   grid.trapHexes = Object.values(traps).map((v) => grid.get(v));

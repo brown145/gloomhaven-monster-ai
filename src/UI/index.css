@@ -28,7 +28,7 @@ body {
 }
 
 body {
-  background-color: #ccc;
+  background-color: var(--white-smoke);
   font-family: sans-serif;
   padding: 0;
   margin: 0;
@@ -37,32 +37,7 @@ body {
 #app {
   height: 100%;
   width: 100%;
-  background-color: var(--white-smoke);
   color: var(--xiketic);
-}
-#app-bar {
-  font-family: "VT323", monospace;
-  font-size: 1.5em;
-  color: var(--rosewood);
-  border-top: 2px solid var(--orange-web);
-  border-bottom: 1px solid var(--mid-smoke);
-}
-#app-main {
-  /* -- */
-}
-#app-scenrio-controls {
-  /* background-color: var(--color-theme-2); */
-  /* border-bottom: 1px solid var(--carrot-orange); */
-}
-#app-scenrio-display {
-  /* background-color: var(--color-theme-1); */
-}
-#app-scenrio-sidebar {
-  border-left: 1px solid var(--mid-smoke);
-  /* background-color: whitesmoke; */
-}
-#app-scenrio-hexInfo {
-  /* background-color: var(--color-theme-1); */
 }
 #app-footer {
   background-color: var(--xiketic);

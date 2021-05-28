@@ -2,77 +2,78 @@ import BGGScenrios from "scenrios/bgg/";
 import Box from "@material-ui/core/Box";
 import Controls from "ui/Controls/";
 import ExampleScenrios from "scenrios/rulebook/";
+import Explainer from "ui/Explainer";
+import Heading from "ui/Heading";
 import HexBoard from "ui/HexBoard/";
 import HexDetails from "ui/HexDetails";
 import React from "react";
+import ScenrioSidebar from "ui/ScenrioSidebar/";
 import Typography from "@material-ui/core/Typography";
-import useLocalStorage from "ui/util/useLocalStorage";
+import { makeStyles } from "@material-ui/core/styles";
+import { useScenrio } from "ui/contexts/ScenrioContext";
+import { useUserSettings } from "ui/contexts/UserSettingsContext";
+
+const useStyles = makeStyles((theme) => ({
+  root: {},
+  appScenrioSidebar: {
+    maxWidth: 400,
+  },
+  main: {
+    maxWidth: 800,
+  },
+}));
 
 const allLayouts = [...ExampleScenrios, ...BGGScenrios];
 
 const App = () => {
-  const [selectedLayoutIndex, setSelectedLayoutIndex] = useLocalStorage(
-    "config-selectedLayoutIndex",
-    0
-  );
-  const [showCoordinates, setShowCoordiates] = useLocalStorage(
-    "config-showCoords",
-    true
-  );
+  const classes = useStyles();
+  const { scenrioIndex } = useUserSettings();
+  const { setScenrio } = useScenrio();
   const [hexInfo, setHexInfo] = React.useState(null);
 
-  const selectedLayout = allLayouts[selectedLayoutIndex];
-  const M1Hex = selectedLayout.getMonster("M1");
-  const M1Attack = { range: 1, targetCount: 1 };
-  const focus = M1Hex.findFocus(M1Attack);
-  const focusOptions = M1Hex.findFocusOptions(M1Attack);
-
-  console.log("focus", focus);
-  console.log(`focusOptions ${focusOptions?.size}`, focusOptions);
-
-  const hexBoardContainerClasses = showCoordinates
-    ? "coords-shown"
-    : "coords-hidden";
-
-  const handleLayoutChange = (e) => {
-    setSelectedLayoutIndex(e.target.value);
-    setHexInfo(null);
-  };
-
-  const handleCoordiateVisibilityChange = (e) =>
-    setShowCoordiates(e.target.checked);
+  React.useEffect(() => {
+    const scenrio = allLayouts[scenrioIndex];
+    setScenrio(scenrio);
+  }, [scenrioIndex]);
 
   return (
-    <Box id="app" display="flex" flexDirection="column">
-      <Box id="app-bar" p={1}>
-        Gloomy Monster AI Haven
+    <Box
+      id="app"
+      className={classes.root}
+      display="flex"
+      flexDirection="column"
+    >
+      <Heading />
+      <Box display="flex" justifyContent="center">
+        <Explainer />
       </Box>
-      <Box id="app-main" display="flex" flexDirection="column" flexGrow={1}>
-        <Box display="flex" flexDirection="row" flexGrow={1}>
-          <Box display="flex" flexDirection="column" flexGrow={1}>
-            <Box id="app-scenrio-controls" p={1}>
-              <Controls
-                layouts={allLayouts}
-                selectedLayout={selectedLayoutIndex}
-                showCoordinates={showCoordinates}
-                onLayoutChange={handleLayoutChange}
-                onCoordiateVisibilityChange={handleCoordiateVisibilityChange}
-              />
+      <Box display="flex" flexDirection="column" flexGrow={1}>
+        <Box
+          display="flex"
+          flexDirection="row"
+          flexGrow={1}
+          display="flex"
+          justifyContent="center"
+        >
+          <Box
+            display="flex"
+            flexDirection="column"
+            flexGrow={1}
+            className={classes.main}
+          >
+            <Box p={1}>
+              <Controls layouts={allLayouts} />
             </Box>
-            <Box
-              id="app-scenrio-display"
-              flexGrow={1}
-              p={2}
-              className={hexBoardContainerClasses}
-            >
-              <HexBoard layout={selectedLayout} onHexDetail={setHexInfo} />
+            <Box flexGrow={1} p={2} display="flex" justifyContent="center">
+              <HexBoard onHexDetail={setHexInfo} />
             </Box>
-            <Box id="app-scenrio-hexInfo" pl={1}>
+            <Box pl={1}>
+              {/* TODO: clear on scenrio change? */}
               <HexDetails details={hexInfo} />
             </Box>
           </Box>
-          <Box id="app-scenrio-sidebar" p={1}>
-            <Typography variant="body1">Scenrio Sidebar</Typography>
+          <Box className={classes.appScenrioSidebar} p={1}>
+            <ScenrioSidebar />
           </Box>
         </Box>
       </Box>

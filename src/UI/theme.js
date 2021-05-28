@@ -32,6 +32,18 @@ const theme = createMuiTheme({
     secondary: {
       main: colors["Orange Web"],
     },
+    custom: {
+      Xiketic: "#03071e",
+      "Dark Sienna": "#370617",
+      Rosewood: "#6a040f",
+      "Dark Red": "#9d0208",
+      "Rosso Corsa": "#d0000",
+      Vermilion: "#dc2f02",
+      Persimmon: "#e85d04",
+      "Carrot Orange": "#f48c06",
+      "Orange Web": "#faa307",
+      "Selective Yellow": "#ffba08",
+    },
   },
 });
 

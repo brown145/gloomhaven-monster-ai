@@ -8,7 +8,7 @@ const HexDetails = ({ details }) => {
   }
 
   return (
-    <Box display="flex" justifyContent="flex-end" pr={0.5}>
+    <Box>
       <Typography variant="caption" display="block" gutterBottom>
         {JSON.stringify(details)}
       </Typography>

@@ -14,10 +14,20 @@
   resolved "https://artifactory.nike.com/artifactory/api/npm/npm-nike/@emotion/hash/-/hash-0.8.0.tgz#bbbff68978fefdbe68ccb533bc8cbe1d1afb5413"
   integrity sha1-u7/2iXj+/b5ozLUzvIy+HRr7VBM=
 
-"@material-ui/core@^4.11.4":
+"@iconify-icons/mdi@^1.1.15":
+  version "1.1.15"
+  resolved "https://artifactory.nike.com/artifactory/api/npm/npm-nike/@iconify-icons/mdi/-/mdi-1.1.15.tgz#eff8e16d5095828e60bacc476c9facc993e8c301"
+  integrity sha1-7/jhbVCVgo5gusxHbJ+syZPowwE=
+
+"@iconify/react@^1.1.4":
+  version "1.1.4"
+  resolved "https://artifactory.nike.com/artifactory/api/npm/npm-nike/@iconify/react/-/react-1.1.4.tgz#c778eddbaf196e55705d0bedff00d039dc1de8d3"
+  integrity sha1-x3jt268ZblVwXQvt/wDQOdwd6NM=
+
+"@material-ui/core@^4.9.10":
   version "4.11.4"
-  resolved "https://artifactory.nike.com/artifactory/api/npm/npm-nike/@material-ui/core/-/core-4.11.4.tgz#4fb9fe5dec5dcf780b687e3a40cff78b2b9640a4"
-  integrity sha1-T7n+Xexdz3gLaH46QM/3iyuWQKQ=
+  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-4.11.4.tgz#4fb9fe5dec5dcf780b687e3a40cff78b2b9640a4"
+  integrity sha512-oqb+lJ2Dl9HXI9orc6/aN8ZIAMkeThufA5iZELf2LQeBn2NtjVilF5D2w7e9RpntAzDb4jK5DsVhkfOvFY/8fg==
   dependencies:
     "@babel/runtime" "^7.4.4"
     "@material-ui/styles" "^4.11.4"
@@ -38,6 +48,17 @@
   integrity sha1-s6c1MmZRnNdDtkYa6f38sbJetMU=
   dependencies:
     "@babel/runtime" "^7.4.4"
+
+"@material-ui/lab@^4.0.0-alpha.58":
+  version "4.0.0-alpha.58"
+  resolved "https://artifactory.nike.com/artifactory/api/npm/npm-nike/@material-ui/lab/-/lab-4.0.0-alpha.58.tgz#c7ebb66f49863c5acbb20817163737caa299fafc"
+  integrity sha1-x+u2b0mGPFrLsggXFjc3yqKZ+vw=
+  dependencies:
+    "@babel/runtime" "^7.4.4"
+    "@material-ui/utils" "^4.11.2"
+    clsx "^1.0.4"
+    prop-types "^15.7.2"
+    react-is "^16.8.0 || ^17.0.0"
 
 "@material-ui/styles@^4.11.4":
   version "4.11.4"
@@ -106,6 +127,15 @@
   version "17.0.6"
   resolved "https://artifactory.nike.com/artifactory/api/npm/npm-nike/@types/react/-/react-17.0.6.tgz#0ec564566302c562bf497d73219797a5e0297013"
   integrity sha1-DsVkVmMCxWK/SX1zIZeXpeApcBM=
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
+"@types/react@^16.8.6 || ^17.0.0":
+  version "17.0.8"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.8.tgz#fe76e3ba0fbb5602704110fd1e3035cf394778e3"
+  integrity sha512-3sx4c0PbXujrYAKwXxNONXUtRp9C+hE2di0IuxFyf5BELD+B+AXL8G7QrmSKhVwKZDbv0igiAjQAMhXj8Yg3aw==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -421,10 +451,10 @@ qs@~1.0.0:
   resolved "https://registry.yarnpkg.com/qs/-/qs-1.0.2.tgz#50a93e2b5af6691c31bcea5dae78ee6ea1903768"
   integrity sha1-UKk+K1r2aRwxvOpdrnjubqGQN2g=
 
-react-dom@^17.0.2:
+"react-dom@^16.8.0 || ^17.0.0":
   version "17.0.2"
-  resolved "https://artifactory.nike.com/artifactory/api/npm/npm-nike/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
-  integrity sha1-7P+2hF462Nv83EmPDQqTlzZQLCM=
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
+  integrity sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -450,10 +480,10 @@ react-transition-group@^4.4.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@^17.0.2:
+"react@^16.8.0 || ^17.0.0":
   version "17.0.2"
-  resolved "https://artifactory.nike.com/artifactory/api/npm/npm-nike/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
-  integrity sha1-0LXMUW0p6z7uOD91tihkz7aAADc=
+  resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
+  integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
