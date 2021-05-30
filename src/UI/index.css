@@ -49,7 +49,33 @@ body {
 .hexBoard svg {
   display: block;
   overflow: visible;
+  filter: drop-shadow(3px 4px 5px rgba(0, 0, 0, 0.3));
 }
+
+.hexBoard-paths-group {
+  visibility: hidden;
+}
+
+.step-focus .hexBoard-paths-group {
+  visibility: visible;
+}
+
+.hexBoard-paths-path line {
+  stroke-width: 1px;
+  stroke: red;
+}
+.hexBoard-paths-path.focus-path line {
+  stroke-width: 3px;
+  stroke: blue;
+}
+
+.hexBoard-paths-path {
+  stroke-width: 1px;
+  stroke: red;
+  fill: blue;
+}
+
+/* -------- */
 
 .tile {
   fill: #ffffff;
@@ -90,7 +116,7 @@ body {
   stroke: #000000;
 }
 .standee.monster {
-  fill: var(--monster);
+  /* fill: var(--monster); */
   stroke: #661c2c;
 }
 .standee.player,

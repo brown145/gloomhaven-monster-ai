@@ -41,6 +41,17 @@ const Focus = () => {
   const classes = useStyles();
   const { m1Hex, focus, focusOptions } = useScenrio();
 
+  React.useEffect(() => {
+    // setup animations
+    console.log("on");
+    m1Hex?.fooBar();
+    return () => {
+      // cleanup animations
+      console.log("off");
+      m1Hex?.unFooBar();
+    };
+  }, []);
+
   if (!m1Hex || !focus || !focusOptions) {
     return <div>unable to render</div>;
   }

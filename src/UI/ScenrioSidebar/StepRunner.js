@@ -1,3 +1,5 @@
+import { STEPS, useStep } from "ui/contexts/StepContext";
+
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
@@ -31,48 +33,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const steps = [
-  {
-    name: "Review",
-    Component: StepReview,
-  },
-  {
-    name: "Monster Focus",
-    Component: StepFocus,
-  },
-  {
-    name: "monster movement",
-  },
-  {
-    name: "monster attack",
-  },
-];
-
 function getSteps() {
-  return steps.map((step) => step.name);
+  return STEPS.map((step) => step.name);
 }
 
-function getStepComponent(step) {
-  return steps[step].Component;
+function getStepComponent(stepIndex) {
+  const step = STEPS[stepIndex];
+  switch (step.id) {
+    case "preview":
+      return StepReview;
+    case "focus":
+      return StepFocus;
+    default:
+      return null;
+  }
 }
 
 const ScenrioStepper = () => {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
+  const {
+    stepIndex: activeStep,
+    next: handleNext,
+    back: handleBack,
+    reset: handleReset,
+  } = useStep();
 
   const steps = getSteps();
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
-  };
 
   return (
     <div className={classes.root}>

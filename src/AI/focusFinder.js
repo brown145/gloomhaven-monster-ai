@@ -34,6 +34,7 @@ const scope = (grid) => {
       return acc;
     }, []);
 
+    // TODO: need to de-dupe this. While rankedAttackPlans can have duplicate paths with different targets -> here that just causes a duplicate
     const allPaths = attackPlans.map((plan) => plan.path);
 
     const targetMapPath = attackPlans.reduce((acc, { targetHex, path }) => {

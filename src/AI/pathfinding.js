@@ -1,7 +1,5 @@
 import { STANDDEE_TYPES, TILE_OVERLAY_TYPES, TOKEN_TYPES } from "../types";
 
-import unique from "./util/unique";
-
 const findPaths = (grid, startHex, targetHex) => {
   const hexAccessibilityChecker = (trapsAllowed, obstaclesAllowed) => (hex) => {
     const hasEnemy = hex?.standee === STANDDEE_TYPES.Player;
@@ -32,9 +30,17 @@ const findPaths = (grid, startHex, targetHex) => {
     hexAccessibilityChecker(true, false)
   );
 
-  return unique([pathsWithoutTraps, pathsWithTraps]).filter(
-    (path) => !!path.length
-  );
+  const uniquePaths = [];
+  if (
+    pathsWithoutTraps.length === 0 ||
+    pathsWithoutTraps.toString() === pathsWithTraps.toString()
+  ) {
+    uniquePaths.push(pathsWithTraps);
+  } else {
+    uniquePaths.push(pathsWithoutTraps, pathsWithTraps);
+  }
+
+  return uniquePaths;
 };
 
 // DEV NOTE: BreadthFirstSearch does not account for difficult terrain
