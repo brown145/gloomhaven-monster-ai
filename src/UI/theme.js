@@ -1,6 +1,6 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
-const colors = {
+export const colors = {
   Xiketic: "#03071e",
   "Dark Sienna": "#370617",
   Rosewood: "#6a040f",
@@ -13,7 +13,7 @@ const colors = {
   "Selective Yellow": "#ffba08",
 };
 
-const gameColors = {
+export const gameColors = {
   hazard: "#d75527",
   difficult: "#552f8e",
   obstacle: "#1d6f38",

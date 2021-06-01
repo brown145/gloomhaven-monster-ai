@@ -20,9 +20,19 @@ x cut v1.0
 x localstorage for scenrio and hex coord selections
 x display focus and focus select text
 
-- include attack(s) (attack/range/targets) as part of scenrio
-- fancy svg overlays for focus and path(s)
+- svg overlays for focus and path(s)
+  -> √ move stroke/fill/width stuff out of CSS
+  -> build animations and attatch to hex; call from react code
+  ---> Misc: <StandeeLink> mouseover highlight effect
+  ---> Misc: <HexLink> highlight effect
+  ---> Preview: highlight M1
+  ---> Focus: build main path
+  ---> Focus: toggle for alt paths
+  -> move hide/show logic from css?
+- refactor render.js
+- **_ target _**
 - prevent rerenders for svg?
+- include attack(s) (attack/range/targets) as part of scenrio
 - display attack/targets/range info
 - write unit tests for scenrios/ai
 - gh-pages

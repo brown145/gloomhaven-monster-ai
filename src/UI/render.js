@@ -1,3 +1,7 @@
+import { colors, gameColors } from "./theme";
+
+import { round } from "lodash";
+
 // TODO: Refactor in to hexboard
 // todo: refactor into distinct files?
 
@@ -24,16 +28,10 @@ const renderHexPath = (draw, hexes, isFocusPath) => {
   let endHex = hexesClone.pop();
 
   while (endHex) {
-    group
-      .add(drawLineHexCenterPoints(draw, startHex, endHex))
-      .addClass("hexBoard-paths-path");
+    group.add(drawLineHexCenterPoints(draw, startHex, endHex, isFocusPath));
 
     startHex = endHex;
     endHex = hexesClone.pop();
-  }
-
-  if (isFocusPath) {
-    group.addClass("focus-path");
   }
 
   // TODO: make function
@@ -49,7 +47,7 @@ const renderHexPath = (draw, hexes, isFocusPath) => {
   return group;
 };
 
-const drawLineHexCenterPoints = (draw, hex1, hex2) => {
+const drawLineHexCenterPoints = (draw, hex1, hex2, isFocusPath) => {
   const hexCenter = hex1.center();
   const hex1Point = hex1.toPoint();
   const hex2Point = hex2.toPoint();
@@ -59,7 +57,12 @@ const drawLineHexCenterPoints = (draw, hex1, hex2) => {
   const x2 = hexCenter.x + hex2Point.x;
   const y2 = hexCenter.y + hex2Point.y;
 
-  return draw.line(x1, y1, x2, y2);
+  const line = draw.line(x1, y1, x2, y2).attr({
+    "stroke-width": isFocusPath ? 4 : 2,
+    stroke: isFocusPath ? colors.Persimmon : colors["Selective Yellow"],
+  });
+
+  return line;
 };
 
 const renderHex = (draw, hex, onPublishHexDetails) => {
@@ -89,6 +92,35 @@ const drawTile = (draw, hex, point, corners, onPublishHexDetails) => {
   const terrain = hex?.terrain?.toLowerCase();
   const tileClassNames = ["tile", terrain].join(" ");
 
+  const attr = {
+    fill: "#ffffff",
+    "stroke-linejoin": " round",
+    "stroke-linecap": " round",
+    "stroke-width": " 2",
+    stroke: "#000000",
+  };
+
+  switch (terrain) {
+    case "wall":
+      attr.fill = "#929292";
+      break;
+    case "obstacle":
+      attr.fill = gameColors.obstacle;
+      break;
+    case "hazard":
+      attr.fill = gameColors.hazard;
+      break;
+    case "difficult":
+      attr.fill = gameColors.difficult;
+      break;
+    case "door":
+      attr.fill = gameColors.door;
+      break;
+    case "corridor":
+      attr.fill = gameColors.corridor;
+      break;
+  }
+
   const polygon = draw
     .polygon(
       corners.map(({ x, y }) => `${x + point.x},${y + point.y}`).join(",")
@@ -100,24 +132,8 @@ const drawTile = (draw, hex, point, corners, onPublishHexDetails) => {
       console.log("tile clicked", this.animate, e.target);
       this.animate(200, 10, "now").attr({ fill: "#f03" });
     })
+    .attr(attr)
     .addClass(tileClassNames);
-
-  // function firstAnimation() {
-  //   polygon.animate().move(point.x, point.y).after(secondAnimation);
-  // }
-
-  // function secondAnimation() {
-  //   polygon
-  //     .animate()
-  //     .move(point.x + 10, point.y + 10)
-  //     .after(firstAnimation);
-  // }
-
-  // hex.fooBar = function () {
-  //   console.log("fooing the bar");
-
-  //   firstAnimation();
-  // };
 
   return polygon;
 };
@@ -130,9 +146,33 @@ const drawStandee = (draw, hex, point, height, center) => {
     return undefined;
   }
 
+  const standeeAttr = {
+    "stroke-linejoin": "round",
+    "stroke-linecap": "round",
+    "stroke-width": 2,
+    stroke: "#000000",
+  };
+  switch (standee) {
+    case "monster":
+      standeeAttr.fill = gameColors.monster;
+      standeeAttr.stroke = "#661c2c";
+      break;
+    case "summon":
+    case "player":
+      standeeAttr.fill = gameColors.brute;
+      standeeAttr.stroke = "#312574";
+      break;
+  }
+
   const circleSize = height * 0.7;
   const text = hex?.label.toUpperCase();
   const [marker, label] = drawTileMarker(draw, point, circleSize, center, text);
+
+  marker.attr(standeeAttr);
+  label.attr({
+    stroke: "none",
+    fill: "white",
+  });
 
   function firstAnimation() {
     marker
@@ -156,11 +196,23 @@ const drawStandee = (draw, hex, point, height, center) => {
       });
   }
 
+  function singleAnimation() {
+    marker
+      .animate(2000, 10, "now")
+      .attr({ fill: "#f03" })
+      .after(() => {
+        marker.attr({ fill: "#000" });
+        if (doAnimate) {
+          singleAnimation();
+        }
+      });
+  }
+
   hex.fooBar = function () {
     console.log("fooing the bar");
 
     doAnimate = true;
-    firstAnimation();
+    singleAnimation();
   };
 
   hex.unFooBar = function () {
@@ -182,9 +234,27 @@ const drawToken = (draw, hex, point, height, center) => {
     return undefined;
   }
 
+  const tokenAttrs = {
+    "stroke-linejoin": "round",
+    "stroke-linecap": "round",
+    "stroke-width": "2",
+    stroke: "#000000",
+    fill: "none",
+  };
+  switch (token) {
+    case "notation":
+      tokenAttrs.fill = "none";
+      break;
+    case "trap":
+      tokenAttrs.fill = gameColors.trap;
+      break;
+  }
+
   const circleSize = height * 0.5;
   const text = hex?.label?.toUpperCase() || "T";
   const [marker, label] = drawTileMarker(draw, point, circleSize, center, text);
+
+  marker.attr(tokenAttrs);
 
   return draw
     .group()
@@ -235,5 +305,10 @@ const drawCoordinates = (draw, hex, point, height, center) => {
   return draw
     .text(hex.toString())
     .dmove(point.x + center.x, point.y + height / 2)
+    .attr({
+      stroke: "none",
+      fill: "rgba(0, 0, 0, 0.5)",
+      "font-size": "10px",
+    })
     .addClass(classes.join(" "));
 };

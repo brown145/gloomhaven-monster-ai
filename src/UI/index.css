@@ -49,7 +49,7 @@ body {
 .hexBoard svg {
   display: block;
   overflow: visible;
-  filter: drop-shadow(3px 4px 5px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.3));
 }
 
 .hexBoard-paths-group {
@@ -60,94 +60,6 @@ body {
   visibility: visible;
 }
 
-.hexBoard-paths-path line {
-  stroke-width: 1px;
-  stroke: red;
-}
-.hexBoard-paths-path.focus-path line {
-  stroke-width: 3px;
-  stroke: blue;
-}
-
-.hexBoard-paths-path {
-  stroke-width: 1px;
-  stroke: red;
-  fill: blue;
-}
-
-/* -------- */
-
-.tile {
-  fill: #ffffff;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  stroke-width: 2;
-  stroke: #000000;
-}
-.tile:hover {
-  stroke: #929292;
-}
-.tile.empty {
-  fill: #ffffff;
-}
-.tile.wall {
-  fill: #929292;
-}
-.tile.obstacle {
-  fill: var(--obstacle);
-}
-.tile.hazard {
-  fill: var(--hazard);
-}
-.tile.difficult {
-  fill: var(--difficult);
-}
-.tile.door {
-  fill: var(--door);
-}
-.tile.corridor {
-  fill: var(--corridor);
-}
-
-.standee {
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  stroke-width: 2;
-  stroke: #000000;
-}
-.standee.monster {
-  /* fill: var(--monster); */
-  stroke: #661c2c;
-}
-.standee.player,
-.standee.summon {
-  fill: var(--brute);
-  stroke: #312574;
-}
-.standee-label {
-  stroke: none;
-  fill: white;
-}
-
-.token {
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  stroke-width: 2;
-  stroke: #000000;
-  fill: none;
-}
-.token.notation {
-  fill: none;
-}
-.token.trap {
-  fill: var(--trap);
-}
-
-.coordinate {
-  stroke: none;
-  fill: rgba(0, 0, 0, 0.5);
-  font-size: 10px;
-}
 .coords-hidden .coordinate,
 .coordinate.occupied {
   display: none;
