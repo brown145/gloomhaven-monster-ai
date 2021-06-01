@@ -10,7 +10,6 @@ yarn dev
 
 ## V.Now
 
-1. "finish" button causes error (bugfix)
 1. regactor render.js & src/Scenrios/util.js
 
 ## V.Next
@@ -21,6 +20,7 @@ yarn dev
 ## V.Future
 
 1. Useability
+   1. HTML <title>
    1. create legend for hex tile colors, maker colors
    1. Revist app colors/gameColors
    1. render "paths" in sidebar not as arrays but in correct orientation

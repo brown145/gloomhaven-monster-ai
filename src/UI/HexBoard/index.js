@@ -3,7 +3,6 @@ import { SVG } from "@svgdotjs/svg.js";
 import enhanceWithCoordControls from "./enhanceWithCoordControls";
 import { renderLayout } from "../render";
 import { useScenrio } from "ui/contexts/ScenrioContext";
-import { useStep } from "ui/contexts/StepContext";
 import { useUserSettings } from "ui/contexts/UserSettingsContext";
 
 // TODO: make util
@@ -17,14 +16,7 @@ function removeAllChildNodes(parent) {
 const HexBoard = ({ onHexDetail }) => {
   const { scenrio, focusOptions } = useScenrio();
   const { isVisibleCoords } = useUserSettings();
-  const { step } = useStep();
   const SVGref = React.createRef();
-
-  const hexBoardContainerClasses = [];
-  hexBoardContainerClasses.push(
-    isVisibleCoords ? "coords-shown" : "coords-hidden"
-  );
-  hexBoardContainerClasses.push(`step-${step.id}`);
 
   const handleMouseOver = (hexInfo) => {
     onHexDetail(hexInfo);
@@ -47,7 +39,7 @@ const HexBoard = ({ onHexDetail }) => {
 
   console.debug("rendering the SVG container");
   return (
-    <div className={hexBoardContainerClasses.join(", ")}>
+    <div>
       <div ref={SVGref} className="hexBoard"></div>
     </div>
   );
