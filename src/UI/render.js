@@ -82,8 +82,7 @@ const renderHexContents = (draw, hex) => {
   return draw
     .group()
     .add(drawStandee(draw, hex, hexPoint, hexHeight, hexCenter))
-    .add(drawToken(draw, hex, hexPoint, hexHeight, hexCenter))
-    .add(drawCoordinates(draw, hex, hexPoint, hexHeight, hexCenter));
+    .add(drawToken(draw, hex, hexPoint, hexHeight, hexCenter));
 };
 
 const drawTile = (draw, hex, point, corners, onPublishHexDetails) => {
@@ -276,25 +275,4 @@ const drawTileMarker = (draw, point, height, center, text) => {
   const label = draw.text(text).center(centerPoint.x, centerPoint.y);
 
   return [marker, label];
-};
-
-const drawCoordinates = (draw, hex, point, height, center) => {
-  const token = hex?.token?.toLowerCase();
-  const standee = hex?.standee?.toLowerCase();
-  const occupiedTile = token || standee;
-  const classes = ["coordinate"];
-
-  if (occupiedTile) {
-    classes.push("occupied");
-  }
-
-  return draw
-    .text(hex.toString())
-    .dmove(point.x + center.x, point.y + height / 2)
-    .attr({
-      stroke: "none",
-      fill: "rgba(0, 0, 0, 0.5)",
-      "font-size": "10px",
-    })
-    .addClass(classes.join(" "));
 };

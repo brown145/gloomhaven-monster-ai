@@ -1,5 +1,6 @@
 import React from "react";
 import { SVG } from "@svgdotjs/svg.js";
+import enhanceWithCoordControls from "./enhanceWithCoordControls";
 import { renderLayout } from "../render";
 import { useScenrio } from "ui/contexts/ScenrioContext";
 import { useStep } from "ui/contexts/StepContext";
@@ -36,8 +37,13 @@ const HexBoard = ({ onHexDetail }) => {
       removeAllChildNodes(SVGref.current);
       const svg = SVG().addTo(SVGref.current).size("100%", "100%");
       renderLayout(svg, scenrio, focusOptions, handleMouseOver);
+      enhanceWithCoordControls(svg, scenrio);
     }
   }, [scenrio]);
+
+  React.useEffect(() => {
+    scenrio?.toggleCoordinates(isVisibleCoords);
+  }, [scenrio, isVisibleCoords]);
 
   console.debug("rendering the SVG container");
   return (

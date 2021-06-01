@@ -10,9 +10,8 @@ yarn dev
 
 ## V.Now
 
-1. Toggle Coordiates (bugfix)
 1. "finish" button causes error (bugfix)
-1. regactor render.js
+1. regactor render.js & src/Scenrios/util.js
 
 ## V.Next
 
