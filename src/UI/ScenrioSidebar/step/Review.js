@@ -8,6 +8,13 @@ import { useScenrio } from "ui/contexts/ScenrioContext";
 const Review = () => {
   const { m1Hex } = useScenrio();
 
+  React.useEffect(() => {
+    m1Hex?.strobe();
+    return () => {
+      m1Hex?.strobeEnd();
+    };
+  }, [m1Hex]);
+
   return (
     <>
       <Typography>

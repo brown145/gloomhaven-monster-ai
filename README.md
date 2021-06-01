@@ -6,51 +6,43 @@ yarn install
 yarn dev
 ```
 
-# TODO
+# Development
 
-x block out the layout
-x app name
-x scenrio picker
-x hex details
-x ai sequence: stepper & explainer
-x color pallete
-x app colors
-x tile colors
-x cut v1.0
-x localstorage for scenrio and hex coord selections
-x display focus and focus select text
+## V.Now
 
-- svg overlays for focus and path(s)
-  -> √ move stroke/fill/width stuff out of CSS
-  -> build animations and attatch to hex; call from react code
-  ---> Misc: <StandeeLink> mouseover highlight effect
-  ---> Misc: <HexLink> highlight effect
-  ---> Preview: highlight M1
-  ---> Focus: build main path
-  ---> Focus: toggle for alt paths
-  -> move hide/show logic from css?
-- refactor render.js
-- **_ target _**
-- prevent rerenders for svg?
-- include attack(s) (attack/range/targets) as part of scenrio
-- display attack/targets/range info
-- write unit tests for scenrios/ai
-- gh-pages
-- monster ai
-  - find targets
-  - select target
-  - select attck hex
-  - ...
-- create more scenrios
-- scenrio editor?
-  - modify display attack/targets/range info
-  - add flying
-  - add/remove/move monsters and players
-  - add/modify tile overlays
-- scenrio share?
+1. Toggle Coordiates (bugfix)
+1. "finish" button causes error (bugfix)
+1. regactor render.js
 
-# Bugs
+## V.Next
 
-- use jss over index.css;
-  - remove as much as possible;
-  - should only be targeting body and such
+1. monster ai -> movement path
+1. monster ai -> targets
+
+## V.Future
+
+1. Useability
+   1. create legend for hex tile colors, maker colors
+   1. Revist app colors/gameColors
+   1. render "paths" in sidebar not as arrays but in correct orientation
+   1. next/previous arrows for scenrios
+   1. scenerioStepper should have "next" option instead of "finish"
+   1. Center SVG grid after evaluating width
+   1. Alt Focus Paths: hide/show toggle
+   1. gh-pages
+1. Extend
+   1. bring in more scenrios
+   1. write unit tests for scenrios/ai
+1. Editability
+   1. Attack/Target/Movement make editable
+   1. include attack(s) (attack/range/targets) as part of scenrio
+   1. display attack/targets/range info
+1. Pathfinding
+   1. Difficult terrain
+   1. Flying monsters
+1. scenrio editor
+   1. modify display attack/targets/range info
+   1. modify monster attributes. ex: flying
+   1. add/remove/move monsters and players
+   1. add/modify tile overlays
+   1. scenrio share link

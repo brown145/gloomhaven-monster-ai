@@ -1,7 +1,5 @@
 import { colors, gameColors } from "./theme";
 
-import { round } from "lodash";
-
 // TODO: Refactor in to hexboard
 // todo: refactor into distinct files?
 
@@ -135,12 +133,47 @@ const drawTile = (draw, hex, point, corners, onPublishHexDetails) => {
     .attr(attr)
     .addClass(tileClassNames);
 
+  let isStrobing = false;
+  hex.strobeEnd = () => {
+    polygon.attr({ fill: attr.fill });
+    isStrobing = false;
+  };
+  hex.strobe = () => {
+    isStrobing = true;
+    let s2;
+
+    const radial = draw.gradient("radial", function (add) {
+      s2 = add.stop(0.3, "#f03");
+      add.stop(1, "#fff");
+    });
+
+    const doStrobe = () => {
+      s2.animate(750, 0, "now")
+        .ease("<")
+        .update({ color: "#fff" })
+        .after(() => {
+          s2.update({ color: "#f03" });
+          if (isStrobing) {
+            doStrobe();
+          }
+        });
+      polygon.fill(radial);
+    };
+    doStrobe();
+  };
+
+  hex.highlight = () => {
+    polygon.attr({ fill: "#ffc" });
+  };
+  hex.highlightOff = () => {
+    polygon.attr({ fill: attr.fill });
+  };
+
   return polygon;
 };
 
 const drawStandee = (draw, hex, point, height, center) => {
   const standee = hex?.standee?.toLowerCase();
-  let doAnimate = false;
 
   if (!standee) {
     return undefined;
@@ -173,53 +206,6 @@ const drawStandee = (draw, hex, point, height, center) => {
     stroke: "none",
     fill: "white",
   });
-
-  function firstAnimation() {
-    marker
-      .animate()
-      .attr({ fill: "#ccc" })
-      .after(() => {
-        if (doAnimate) {
-          secondAnimation();
-        }
-      });
-  }
-
-  function secondAnimation() {
-    marker
-      .animate()
-      .attr({ fill: "#f03" })
-      .after(() => {
-        if (doAnimate) {
-          firstAnimation();
-        }
-      });
-  }
-
-  function singleAnimation() {
-    marker
-      .animate(2000, 10, "now")
-      .attr({ fill: "#f03" })
-      .after(() => {
-        marker.attr({ fill: "#000" });
-        if (doAnimate) {
-          singleAnimation();
-        }
-      });
-  }
-
-  hex.fooBar = function () {
-    console.log("fooing the bar");
-
-    doAnimate = true;
-    singleAnimation();
-  };
-
-  hex.unFooBar = function () {
-    console.log("stop the fooing");
-    doAnimate = false;
-    // marker.timeline().stop();
-  };
 
   return draw
     .group()

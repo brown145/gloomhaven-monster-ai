@@ -1,9 +1,11 @@
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import HexLink from "../HexLink";
 import Link from "@material-ui/core/Link";
 import React from "react";
 import StandeeToLink from "./util/StandeeToLink";
+import Switch from "@material-ui/core/Switch";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -40,17 +42,6 @@ const jsxJoin = (elements, joinWith) => {
 const Focus = () => {
   const classes = useStyles();
   const { m1Hex, focus, focusOptions } = useScenrio();
-
-  React.useEffect(() => {
-    // setup animations
-    console.log("on");
-    m1Hex?.fooBar();
-    return () => {
-      // cleanup animations
-      console.log("off");
-      m1Hex?.unFooBar();
-    };
-  }, []);
 
   if (!m1Hex || !focus || !focusOptions) {
     return <div>unable to render</div>;
@@ -96,6 +87,9 @@ const Focus = () => {
         )}
         .
       </Typography>
+      <Box pt={1}>
+        <FormControlLabel control={<Switch />} label="Show Alternate Paths" />
+      </Box>
       <Box pt={3}>
         <Divider />
       </Box>

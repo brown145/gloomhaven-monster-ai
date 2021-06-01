@@ -35,8 +35,20 @@ const HexLink = ({ hex }) => {
   const coordsInside = hex.toString().length <= 3;
   const containerClass = coordsInside ? "coordsInside" : "coordsOutside";
 
+  const handleMouseOver = () => {
+    hex?.highlight();
+  };
+
+  const handleMouseOut = () => {
+    hex?.highlightOff();
+  };
+
   return (
-    <span className={classes.root}>
+    <span
+      className={classes.root}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
+    >
       <span className={containerClass}>
         <SvgIcon viewBox="0 0 100 100">
           <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" />

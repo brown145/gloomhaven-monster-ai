@@ -108,6 +108,7 @@ const Controls = ({ layouts }) => {
       </Box>
 
       <FormControlLabel
+        label="Hex Coordinates"
         control={
           <Switch
             size="small"
@@ -116,7 +117,6 @@ const Controls = ({ layouts }) => {
             name="app-scenrio-controls-showCoordinates"
           />
         }
-        label="Hex Coordinates"
       />
     </Box>
   );
