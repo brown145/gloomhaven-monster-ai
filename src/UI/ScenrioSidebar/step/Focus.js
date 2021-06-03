@@ -10,6 +10,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { useScenrio } from "ui/contexts/ScenrioContext";
+import { useTheme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,12 +41,35 @@ const jsxJoin = (elements, joinWith) => {
 };
 
 const Focus = () => {
+  const { scenrio, m1Hex, focus, focusOptions } = useScenrio();
+  const [showAltPaths, setShowAltPaths] = React.useState(false);
   const classes = useStyles();
-  const { m1Hex, focus, focusOptions } = useScenrio();
+  const theme = useTheme();
+
+  React.useEffect(() => {
+    scenrio?.hidePaths();
+    if (showAltPaths) {
+      scenrio?.showPaths([...focusOptions.allPaths].reverse().slice(1), {
+        color: theme.palette.secondary.main,
+        pathEndPoint: true,
+      });
+    }
+    scenrio?.showPaths([...focusOptions.allPaths].slice(0, 1), {
+      color: theme.palette.primary.main,
+      weight: 2,
+    });
+    return () => {
+      scenrio?.hidePaths();
+    };
+  }, [scenrio, showAltPaths]);
 
   if (!m1Hex || !focus || !focusOptions) {
     return <div>unable to render</div>;
   }
+
+  const handleAltPathsChange = (event) => {
+    setShowAltPaths(event.target.checked);
+  };
 
   return (
     <Box className={classes.root}>
@@ -88,7 +112,12 @@ const Focus = () => {
         .
       </Typography>
       <Box pt={1}>
-        <FormControlLabel control={<Switch />} label="Show Alternate Paths" />
+        <FormControlLabel
+          control={
+            <Switch checked={showAltPaths} onChange={handleAltPathsChange} />
+          }
+          label="Show Alternate Paths"
+        />
       </Box>
       <Box pt={3}>
         <Divider />

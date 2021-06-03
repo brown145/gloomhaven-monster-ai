@@ -8,9 +8,13 @@ yarn dev
 
 # Development
 
+## 🐛 Bugs
+
+1. mouseover hex causing entire app to re-render -> handler for hex details
+
 ## V.Now
 
-1. regactor render.js & src/Scenrios/util.js
+1. refactor src/Scenrios/util.js
 
 ## V.Next
 

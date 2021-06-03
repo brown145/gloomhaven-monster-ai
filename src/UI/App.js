@@ -68,7 +68,6 @@ const App = () => {
               <HexBoard onHexDetail={setHexInfo} />
             </Box>
             <Box pl={1}>
-              {/* TODO: clear on scenrio change? */}
               <HexDetails details={hexInfo} />
             </Box>
           </Box>

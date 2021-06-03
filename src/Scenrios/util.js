@@ -52,7 +52,7 @@ export const makeScenrio = ({
 
   tileAugmenter(monsters, "standee", STANDDEE_TYPES.Monster);
   tileAugmenter(players, "standee", STANDDEE_TYPES.Player);
-  tileAugmenter(traps, "token", TOKEN_TYPES.Trap);
+  tileAugmenter(traps, "token", TOKEN_TYPES.Trap); // TODO: call this an overlay not token
   tileAugmenter(notations, "token", TOKEN_TYPES.Notation);
 
   Object.entries(terrain).forEach(([terrain, coords]) => {

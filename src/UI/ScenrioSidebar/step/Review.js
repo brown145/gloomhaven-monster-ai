@@ -9,9 +9,9 @@ const Review = () => {
   const { m1Hex } = useScenrio();
 
   React.useEffect(() => {
-    m1Hex?.strobe();
+    m1Hex?.strobe?.(true);
     return () => {
-      m1Hex?.strobeEnd();
+      m1Hex?.strobe?.(false);
     };
   }, [m1Hex]);
 

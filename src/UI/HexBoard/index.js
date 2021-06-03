@@ -1,35 +1,29 @@
 import React from "react";
 import { SVG } from "@svgdotjs/svg.js";
-import enhanceWithCoordControls from "./enhanceWithCoordControls";
-import { renderLayout } from "../render";
+import ScenrioRenderer from "./svgRenderers/ScenrioRenderer";
+import removeAllChildNodes from "./svgRenderers/util/removeAllChildNotes.js";
 import { useScenrio } from "ui/contexts/ScenrioContext";
 import { useUserSettings } from "ui/contexts/UserSettingsContext";
 
-// TODO: make util
-function removeAllChildNodes(parent) {
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild);
-  }
-}
-
 // DEV NOTE: no idea if this is going to cause this to re-render too much
 const HexBoard = ({ onHexDetail }) => {
-  const { scenrio, focusOptions } = useScenrio();
+  const { scenrio } = useScenrio();
   const { isVisibleCoords } = useUserSettings();
   const SVGref = React.createRef();
 
   const handleMouseOver = (hexInfo) => {
+    // DEV NOTE: do i care that this sets App level state and causes entire app re-render; seems a lot tied to mouse over
     onHexDetail(hexInfo);
   };
 
-  // TODO: meed a return?
   React.useEffect(() => {
     if (scenrio) {
-      console.debug("initializaing the SVG");
       removeAllChildNodes(SVGref.current);
       const svg = SVG().addTo(SVGref.current).size("100%", "100%");
-      renderLayout(svg, scenrio, focusOptions, handleMouseOver);
-      enhanceWithCoordControls(svg, scenrio);
+      const scenrioSVG = ScenrioRenderer(scenrio, svg);
+      scenrioSVG.init();
+      scenrioSVG.registerListener("tile-mouseover", handleMouseOver);
+      scenrioSVG.registerListener("tile-mouseout", () => handleMouseOver());
     }
   }, [scenrio]);
 

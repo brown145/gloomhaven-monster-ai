@@ -36,11 +36,11 @@ const HexLink = ({ hex }) => {
   const containerClass = coordsInside ? "coordsInside" : "coordsOutside";
 
   const handleMouseOver = () => {
-    hex?.highlight();
+    hex?.highlight(true);
   };
 
   const handleMouseOut = () => {
-    hex?.highlightOff();
+    hex?.highlight(false);
   };
 
   return (

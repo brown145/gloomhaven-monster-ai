@@ -12,11 +12,11 @@ const StandeeLink = ({ hex }) => {
   const classes = useStyles();
 
   const handleMouseOver = () => {
-    hex?.strobe();
+    hex?.strobe(true);
   };
 
   const handleMouseOut = () => {
-    hex?.strobeEnd();
+    hex?.strobe(false);
   };
 
   return (
