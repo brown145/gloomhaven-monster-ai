@@ -1,4 +1,4 @@
-import { STANDDEE_TYPES, TILE_OVERLAY_TYPES, TOKEN_TYPES } from "../types";
+import { STANDDEE_TYPES, TILE_OVERLAY_TYPES, TOKEN_TYPES } from "types";
 
 const findPaths = (grid, startHex, targetHex) => {
   const hexAccessibilityChecker = (trapsAllowed, obstaclesAllowed) => (hex) => {

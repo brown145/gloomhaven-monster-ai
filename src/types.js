@@ -1,4 +1,3 @@
-// TODO: need to alias this file
 export const TILE_OVERLAY_TYPES = {
   Empty: "Empty",
   Obstacle: "Obstacle",

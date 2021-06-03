@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "clean": "rimraf dist/* && rimraf .cache/*",
     "dev": "parcel src/UI/index.html"
   },
   "dependencies": {
@@ -14,12 +15,16 @@
     "honeycomb-grid": "^3.1.8",
     "lodash": "^4.17.21",
     "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0"
+    "react-dom": "^16.8.0 || ^17.0.0",
+    "types": "^0.1.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "rimraf": "^3.0.2"
+  },
   "alias": {
     "ai": "./src/AI/",
     "ui": "./src/UI/",
-    "scenrios": "./src/Scenrios/"
+    "scenrios": "./src/Scenrios/",
+    "types": "./src/types.js"
   }
 }

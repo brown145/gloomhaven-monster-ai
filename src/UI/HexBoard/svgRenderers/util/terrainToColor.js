@@ -1,4 +1,4 @@
-import { TILE_OVERLAY_TYPES } from "../../../../types";
+import { TILE_OVERLAY_TYPES } from "types";
 import { gameColors } from "ui/theme";
 
 function terrainToColor(terrain) {

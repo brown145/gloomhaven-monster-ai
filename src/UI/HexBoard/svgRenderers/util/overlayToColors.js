@@ -1,4 +1,4 @@
-import { TOKEN_TYPES } from "../../../../types";
+import { TOKEN_TYPES } from "types";
 import { gameColors } from "ui/theme";
 
 function overlayToColors({ token }) {

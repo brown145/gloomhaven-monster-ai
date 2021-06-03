@@ -10,21 +10,19 @@ yarn dev
 
 ## 🐛 Bugs
 
-1. mouseover hex causing entire app to re-render -> handler for hex details
+1. hexDetails is buggy
+   1. mouseover hex causing entire app to re-render -> handler for hex details
+   1. onmouseover/onmouseout race condidtion?
 
 ## V.Now
-
-1. refactor src/Scenrios/util.js
-
-## V.Next
 
 1. monster ai -> movement path
 1. monster ai -> targets
 
-## V.Future
+## V.Next
 
 1. Useability
-   1. HTML <title>
+   1. HTML \<title>
    1. create legend for hex tile colors, maker colors
    1. Revist app colors/gameColors
    1. render "paths" in sidebar not as arrays but in correct orientation
@@ -33,6 +31,9 @@ yarn dev
    1. Center SVG grid after evaluating width
    1. Alt Focus Paths: hide/show toggle
    1. gh-pages
+
+## V.Future
+
 1. Extend
    1. bring in more scenrios
    1. write unit tests for scenrios/ai

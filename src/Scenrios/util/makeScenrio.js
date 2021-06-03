@@ -1,11 +1,11 @@
 import * as Honeycomb from "honeycomb-grid";
 
-import { STANDDEE_TYPES, TOKEN_TYPES } from "../types";
+import { STANDDEE_TYPES, TOKEN_TYPES } from "types";
 
 import focusFinder from "ai/focusFinder";
-import { hexProps } from "./common";
+import hexProps from "./hexProps";
 
-export const makeScenrio = ({
+const makeScenrio = ({
   title,
   orientation,
   description,
@@ -63,3 +63,5 @@ export const makeScenrio = ({
 
   return grid;
 };
+
+export default makeScenrio;

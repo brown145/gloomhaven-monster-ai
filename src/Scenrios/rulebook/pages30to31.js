@@ -1,5 +1,5 @@
-import { TILE_OVERLAY_TYPES } from "../../types";
-import { makeScenrio } from "../util";
+import { TILE_OVERLAY_TYPES } from "types";
+import makeScenrio from "scenrios/util/makeScenrio";
 
 // scenrios from
 // https://online.flippingbook.com/view/598058/30/

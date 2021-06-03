@@ -1,4 +1,4 @@
-import { TOKEN_TYPES } from "../../types";
+import { TOKEN_TYPES } from "types";
 
 const isHexTrapped = (hex) => hex.token === TOKEN_TYPES.Trap;
 

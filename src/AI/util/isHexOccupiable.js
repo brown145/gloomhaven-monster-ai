@@ -1,4 +1,4 @@
-import { TILE_OVERLAY_TYPES } from "../../types";
+import { TILE_OVERLAY_TYPES } from "types";
 
 const isHexOccupiable = ({ terrain }) => {
   // DEV NOTE: flying monsters can end turn on obstacles?

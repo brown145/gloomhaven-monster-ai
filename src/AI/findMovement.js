@@ -1,4 +1,4 @@
-import { TILE_OVERLAY_TYPES } from "../types";
+import { TILE_OVERLAY_TYPES } from "types";
 import findPath from "./pathfinding";
 
 export const findMovement = (grid, monsterHex, monsterAttack, targetHex) => {

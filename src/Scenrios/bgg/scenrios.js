@@ -1,5 +1,5 @@
-import { TILE_OVERLAY_TYPES } from "../../types";
-import { makeScenrio } from "../util";
+import { TILE_OVERLAY_TYPES } from "types";
+import makeScenrio from "scenrios/util/makeScenrio";
 
 // scenrios from
 // https://boardgamegeek.com/geeklist/234575/gloomhaven-rules-quiz

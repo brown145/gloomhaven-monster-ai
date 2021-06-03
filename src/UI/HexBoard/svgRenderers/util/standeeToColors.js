@@ -1,4 +1,4 @@
-import { STANDDEE_TYPES } from "../../../../types";
+import { STANDDEE_TYPES } from "types";
 import { gameColors } from "ui/theme";
 
 function standeeToColors({ standee }) {
