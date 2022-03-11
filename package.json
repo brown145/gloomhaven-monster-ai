@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf dist/* && rimraf .cache/*",
-    "dev": "parcel src/UI/index.html"
+    "dev": "parcel src/UI/index.html",
+    "dist2docs": "cp -a dist/* docs"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.10",

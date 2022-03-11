@@ -1,0 +1,69 @@
+:root {
+  --xiketic: hsla(231, 82%, 6%, 1);
+  --dark-sienna: hsla(339, 80%, 12%, 1);
+  --rosewood: hsla(354, 93%, 22%, 1);
+  --dark-red: hsla(358, 97%, 31%, 1);
+  --rosso-corsa: #d10000;
+  --vermilion: hsla(12, 98%, 44%, 1);
+  --persimmon: hsla(23, 97%, 46%, 1);
+  --carrot-orange: hsla(34, 95%, 49%, 1);
+  --orange-web: hsla(39, 96%, 50%, 1);
+  --selective-yellow: hsla(43, 100%, 52%, 1);
+  --mid-smoke: hsl(0, 0%, 88%);
+  --white-smoke: hsl(0, 0%, 96%);
+
+  --hazard: #d75527;
+  --difficult: #552f8e;
+  --obstacle: #1d6f38;
+  --door: #244fa2;
+  --corridor: #90918f;
+  --trap: #921e20;
+  --brute: #3ff3fe;
+  --monster: #fe3f3f;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--white-smoke);
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+  color: var(--xiketic);
+}
+#app-footer {
+  background-color: var(--xiketic);
+  color: var(--orange-web);
+}
+
+/* -------- */
+
+.hexBoard svg {
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.3));
+}
+
+.hexBoard-paths-group {
+  visibility: hidden;
+}
+
+.step-focus .hexBoard-paths-group {
+  visibility: visible;
+}
+
+.coords-hidden .coordinate,
+.coordinate.occupied {
+  display: none;
+}
+
+
+/*# sourceMappingURL=/UI.9ad09f98.css.map */
