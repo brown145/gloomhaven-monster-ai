@@ -33,6 +33,7 @@ const App = () => {
 
   React.useEffect(() => {
     const scenrio = allLayouts[scenrioIndex];
+    console.log(allLayouts);
     setScenrio(scenrio);
   }, [scenrioIndex]);
 
@@ -52,7 +53,6 @@ const App = () => {
           display="flex"
           flexDirection="row"
           flexGrow={1}
-          display="flex"
           justifyContent="center"
         >
           <Box

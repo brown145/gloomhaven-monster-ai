@@ -11,6 +11,8 @@ const HexBoard = ({ onHexDetail }) => {
   const { isVisibleCoords } = useUserSettings();
   const SVGref = React.createRef();
 
+  console.log("scenrio", scenrio);
+
   const handleMouseOver = (hexInfo) => {
     // DEV NOTE: do i care that this sets App level state and causes entire app re-render; seems a lot tied to mouse over
     onHexDetail(hexInfo);

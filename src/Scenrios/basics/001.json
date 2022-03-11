@@ -1,0 +1,19 @@
+{
+  "title": "Will Advance",
+  "description": "Basic scenrio to test that monster will advance",
+  "orientation": "flat",
+  "source": "self",
+  "width": 5,
+  "height": 5,
+  "monsters": {
+    "M1": {
+      "xy": "1,1"
+    }
+  },
+  "players": {
+    "P1": {
+      "xy": "4,4",
+      "iniative": 1
+    }
+  }
+}
